@@ -1,0 +1,9 @@
+{
+  "lumoImports" : [ "typography", "color", "spacing", "badge", "utility" ],
+  "assets" : {
+    "@fontsource/bebas-neue" : {
+      "*.css" : "@fontsource/bebas-neue",
+      "files/*" : "@fontsource/bebas-neue/files"
+    }
+  }
+}
