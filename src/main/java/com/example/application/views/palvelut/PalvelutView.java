@@ -1,8 +1,8 @@
 package com.example.application.views.palvelut;
 
-import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.html.Image;
-import com.vaadin.flow.component.html.Paragraph;
+import com.example.application.data.ServiceItem;
+import com.example.application.services.ServiceItemService;
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
@@ -11,28 +11,32 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
+import java.util.List;
+
 @PageTitle("Palvelut")
 @Route("palvelut")
 @Menu(order = 2, icon = LineAwesomeIconUrl.CUT_SOLID)
 @AnonymousAllowed
 public class PalvelutView extends VerticalLayout {
 
-    public PalvelutView() {
-        setSpacing(false);
+    private final ServiceItemService service;
 
-        Image img = new Image("images/empty-plant.png", "placeholder plant");
-        img.setWidth("200px");
-        add(img);
+    public PalvelutView(ServiceItemService service) {
+        this.service = service;
+        setSpacing(true);
+        setPadding(true);
 
-        H2 header = new H2("This place intentionally left empty");
-        header.addClassNames(Margin.Top.XLARGE, Margin.Bottom.MEDIUM);
-        add(header);
-        add(new Paragraph("It’s a place where you can grow your own UI 🤗"));
+        Grid<ServiceItem> grid = new Grid<>(ServiceItem.class, false);
 
+        grid.addColumn(ServiceItem::getNimi).setHeader("Palvelun nimi").setAutoWidth(true);
+        grid.addColumn(ServiceItem::getKuvaus).setHeader("Kuvaus").setAutoWidth(true);
+        grid.addColumn(item -> String.format("%.2f €", item.getHinta())).setHeader("Hinta (€)").setAutoWidth(true);
+        grid.addColumn(item -> item.getKestoMinuuteissa() + " min").setHeader("Kesto").setAutoWidth(true);
+
+        List<ServiceItem> palvelut = service.findAll();
+        grid.setItems(palvelut);
+
+        add(grid);
         setSizeFull();
-        setJustifyContentMode(JustifyContentMode.CENTER);
-        setDefaultHorizontalComponentAlignment(Alignment.CENTER);
-        getStyle().set("text-align", "center");
     }
-
 }
