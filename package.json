@@ -3,7 +3,7 @@
   "license": "UNLICENSED",
   "type": "module",
   "dependencies": {
-    "@fontsource/bebas-neue": "4.5.0",
+    "@fontsource/bebas-neue": "^4.5.0",
     "@polymer/polymer": "3.5.2",
     "@vaadin/bundles": "24.7.1",
     "@vaadin/common-frontend": "0.0.19",
@@ -87,7 +87,7 @@
       "workbox-core": "7.3.0",
       "workbox-precaching": "7.3.0"
     },
-    "hash": "bad897e9ab3ba9a66874bc7c68e3df0c5ed6196ba5226c8ac9d336ea0c2e3300"
+    "hash": "524d053e9583f71dbca10bc5d90c20a1ce99e44e6939f0fe96c1ad3eaf24e48a"
   },
   "overrides": {
     "@vaadin/bundles": "$@vaadin/bundles",

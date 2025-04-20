@@ -1,9 +1,8 @@
 package com.example.application.data;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class ServiceItem {
@@ -15,6 +14,8 @@ public class ServiceItem {
     private String kuvaus;
     private Double hinta;
     private Integer kestoMinuuteissa;
+    @ManyToMany
+    private List<Barber> barbers;
 
     // Getters & setters
     public Long getId() {
@@ -55,6 +56,14 @@ public class ServiceItem {
 
     public void setKestoMinuuteissa(Integer kestoMinuuteissa) {
         this.kestoMinuuteissa = kestoMinuuteissa;
+    }
+
+    public List<Barber> getBarbers() {
+        return barbers;
+    }
+
+    public void setBarbers(List<Barber> barbers) {
+        this.barbers = barbers;
     }
 }
 

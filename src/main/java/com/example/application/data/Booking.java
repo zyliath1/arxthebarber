@@ -21,6 +21,44 @@ public class Booking {
 
     private LocalDateTime aika;
 
-    // Getters & setters
-}
+    // --- Getterit ja setterit ---
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Barber getBarber() {
+        return barber;
+    }
+
+    public void setBarber(Barber barber) {
+        this.barber = barber;
+    }
+
+    public ServiceItem getService() {
+        return service;
+    }
+
+    public void setService(ServiceItem service) {
+        this.service = service;
+    }
+
+    public LocalDateTime getAika() {
+        return aika;
+    }
+
+    public void setAika(LocalDateTime aika) {
+        this.aika = aika;
+    }
+}

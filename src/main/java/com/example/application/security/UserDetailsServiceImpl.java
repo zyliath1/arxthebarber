@@ -1,9 +1,8 @@
 package com.example.application.security;
 
+import com.example.application.data.Role;
 import com.example.application.data.User;
 import com.example.application.data.UserRepository;
-import java.util.List;
-import java.util.stream.Collectors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,6 +10,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -31,7 +33,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     private static List<GrantedAuthority> getAuthorities(User user) {
-        return user.getRoles().stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role))
+        return user.getRoles().stream().map(Role::name).map(role -> new SimpleGrantedAuthority("ROLE_" + role))
                 .collect(Collectors.toList());
 
     }
