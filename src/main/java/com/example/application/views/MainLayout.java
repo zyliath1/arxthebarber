@@ -82,6 +82,9 @@ public class MainLayout extends AppLayout {
             }
         });
 
+        nav.addItem(new SideNavItem("✂ Parturit", "parturit"));
+        nav.addItem(new SideNavItem("\uD83D\uDCC5 Varaukset", "varaukset"));
+
         return nav;
     }
 
